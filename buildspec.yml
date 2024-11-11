@@ -6,10 +6,6 @@ phases:
     commands:
       - aws secretsmanager get-secret-value --secret-id $SECRET_ID --query SecretString --output text > secret.json
       - mv secret.json .env
-      # - mv appspec_$ENV.yaml appspec.yaml
-      # - mv taskdef_$ENV.json taskdef.json
-      - mv deployment/appspec/appspec_$ENV.yaml appspec.yaml
-      - mv deployment/taskdef/taskdef_$ENV.json taskdef.json
       - echo Logging in to Amazon ECR...
       - aws --version
       - echo $AWS_DEFAULT_REGION
