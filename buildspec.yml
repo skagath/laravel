@@ -4,7 +4,6 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - mv secret.json .env
       - echo Logging in to Amazon ECR...
       - aws --version
       - aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 438465160558.dkr.ecr.us-west-1.amazonaws.com
