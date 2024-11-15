@@ -4,21 +4,20 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - aws secretsmanager get-secret-value --secret-id $SECRET_ID --query SecretString --output text > secret.json
       - mv secret.json .env
       - echo Logging in to Amazon ECR...
       - aws --version
-      - echo $AWS_DEFAULT_REGION
-      - echo $(aws ecr get-login-password --region $AWS_DEFAULT_REGION) | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO
-      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO
-      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 2-7 | tr -d '.,<>#$%')
-      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 438465160558.dkr.ecr.us-west-1.amazonaws.com
+      - REPOSITORY_URI=438465160558.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repo
+      - echo $REPOSITORY_URI
+      - ECR_REPO=my-ecr-repo
+      - IMAGE_TAG=latest
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image..
-      - docker build  -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build  -t my-ecr-repo .
+      - docker tag my-ecr-repo:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
