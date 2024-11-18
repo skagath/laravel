@@ -1,0 +1,72 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-west-1:438465160558:task-definition/fargate-task-family:4",
+    "containerDefinitions": [
+        {
+            "name": "my-ecr-repo",
+            "image": "438465160558.dkr.ecr.us-west-1.amazonaws.com/my-ecr-repo:latest",
+            "cpu": 256,
+            "memory": 512,
+            "portMappings": [
+                {
+                    "name": "my-ecr-repo-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "systemControls": []
+        }
+    ],
+    "family": "fargate-task-family",
+    "taskRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 4,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "enableExecuteCommand": true
+    "registeredAt": "2024-11-18T05:00:11.571Z",
+    "registeredBy": "arn:aws:iam::438465160558:root",
+    "tags": [
+        {
+            "key": "Environment",
+            "value": "Production"
+        },
+        {
+            "key": "Name",
+            "value": "fargate-task"
+        }
+    ]
+}
