@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-west-1:438465160558:task-definition/fargate-task-family:8",
+    "taskDefinitionArn": "arn:aws:ecs:us-west-1:438465160558:task-definition/fargate-task-family:9",
     "containerDefinitions": [
         {
             "name": "my-ecr-repo",
@@ -34,8 +34,8 @@
             "executeCommandConfiguration": {
                 "enabled": true,
                 "logConfiguration": {
-                    "cloudWatchLogGroup": "/aws/ecs/execute-command",
-                    "cloudWatchLogStreamPrefix": "ecs"
+                    "cloudWatchLogGroup": "/ecs/fargate-task-family/execute-command",
+                    "cloudWatchLogStreamPrefix": "ecs-execute"
                 }
             }
         }
@@ -44,7 +44,8 @@
     "taskRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 8,
+    "revision": 9,
+    "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
         {
@@ -92,8 +93,8 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-11-18T06:15:29.564Z",
-    "registeredBy": "arn:aws:iam::438465160558:root",
+    "registeredAt": "2024-11-18T06:36:17.880Z",
+    "registeredBy": "arn:aws:sts::438465160558:assumed-role/AWSCodePipelineServiceRole-us-east-1-wordpress/1731911777568",
     "tags": [
         {
             "key": "Environment",
