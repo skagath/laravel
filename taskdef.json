@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-west-1:438465160558:task-definition/fargate-task-family:9",
+    "taskDefinitionArn": "arn:aws:ecs:us-west-1:438465160558:task-definition/fargate-task-family:11",
     "containerDefinitions": [
         {
             "name": "my-ecr-repo",
@@ -10,6 +10,7 @@
                 {
                     "name": "my-ecr-repo-80-tcp",
                     "containerPort": 80,
+                    "hostPort": 0,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -30,21 +31,14 @@
                 },
                 "secretOptions": []
             },
-            "systemControls": [],
-            "executeCommandConfiguration": {
-                "enabled": true,
-                "logConfiguration": {
-                    "cloudWatchLogGroup": "/ecs/fargate-task-family/execute-command",
-                    "cloudWatchLogStreamPrefix": "ecs-execute"
-                }
-            }
+            "systemControls": []
         }
     ],
     "family": "fargate-task-family",
     "taskRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 9,
+    "revision": 11,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -64,7 +58,7 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
         },
         {
-            "name": "ecs.capability.task-iam-role"
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -93,8 +87,8 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-11-18T06:36:17.880Z",
-    "registeredBy": "arn:aws:sts::438465160558:assumed-role/AWSCodePipelineServiceRole-us-east-1-wordpress/1731911777568",
+    "registeredAt": "2024-11-18T06:54:19.224Z",
+    "registeredBy": "arn:aws:sts::438465160558:assumed-role/AWSCodePipelineServiceRole-us-east-1-wordpress/1731912858876",
     "tags": [
         {
             "key": "Environment",
