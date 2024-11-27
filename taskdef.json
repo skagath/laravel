@@ -1,14 +1,13 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-west-1:438465160558:task-definition/fargate-task-family:11",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:438465160558:task-definition/tf-wp:30",
     "containerDefinitions": [
         {
             "name": "my-ecr-repo",
-            "image": "438465160558.dkr.ecr.us-west-1.amazonaws.com/my-ecr-repo:latest",
-            "cpu": 256,
-            "memory": 512,
+            "image": "438465160558.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repo:latest",
+            "cpu": 0,
             "portMappings": [
                 {
-                    "name": "my-ecr-repo-80-tcp",
+                    "name": "wordpress-80-tcp",
                     "containerPort": 80,
                     "hostPort": 0,
                     "protocol": "tcp",
@@ -17,16 +16,18 @@
             ],
             "essential": true,
             "environment": [],
+            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
+            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/fargate-task-family",
+                    "awslogs-group": "/ecs/tf-wp",
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
-                    "awslogs-region": "us-west-1",
+                    "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
@@ -34,11 +35,9 @@
             "systemControls": []
         }
     ],
-    "family": "fargate-task-family",
-    "taskRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
+    "family": "tf-wp",
     "executionRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
-    "networkMode": "awsvpc",
-    "revision": 11,
+    "revision": 30,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -58,16 +57,10 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
         },
         {
-            "name": "com.amazonaws.ecs.capability.task-iam-role"
-        },
-        {
             "name": "ecs.capability.execution-role-ecr-pull"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-        },
-        {
-            "name": "ecs.capability.task-eni"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
@@ -75,28 +68,18 @@
     ],
     "placementConstraints": [],
     "compatibilities": [
-        "EC2",
-        "FARGATE"
+        "EC2"
     ],
     "requiresCompatibilities": [
-        "FARGATE"
+        "EC2"
     ],
-    "cpu": "256",
-    "memory": "512",
+    "cpu": "1024",
+    "memory": "3072",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-11-18T06:54:19.224Z",
-    "registeredBy": "arn:aws:sts::438465160558:assumed-role/AWSCodePipelineServiceRole-us-east-1-wordpress/1731912858876",
-    "tags": [
-        {
-            "key": "Environment",
-            "value": "Production"
-        },
-        {
-            "key": "Name",
-            "value": "fargate-task"
-        }
-    ]
+    "registeredAt": "2024-11-27T10:12:36.644Z",
+    "registeredBy": "arn:aws:iam::438465160558:root",
+    "tags": []
 }
