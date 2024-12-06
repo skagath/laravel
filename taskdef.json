@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:438465160558:task-definition/myalb:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:438465160558:task-definition/laravel:1",
     "containerDefinitions": [
         {
             "name": "my-ecr-repo",
@@ -23,7 +23,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/myalb",
+                    "awslogs-group": "/ecs/laravel",
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
@@ -35,7 +35,8 @@
             "systemControls": []
         }
     ],
-    "family": "myalb",
+    "family": "laravel",
+    "taskRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::438465160558:role/ecsTaskExecutionRole",
     "revision": 1,
     "volumes": [],
@@ -55,6 +56,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -79,7 +83,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-11-27T10:52:45.092Z",
+    "registeredAt": "2024-12-06T10:31:59.396Z",
     "registeredBy": "arn:aws:iam::438465160558:root",
     "tags": []
 }
